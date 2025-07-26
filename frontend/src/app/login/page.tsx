@@ -44,16 +44,17 @@ export default function Login() {
       })
 
       console.log("**response", response)
-      // const data = await response.json()
-      const data = {
-        user: {
-          id: "123",
-          email: "test@test.com",
-          username: "test",
-        },
-        token: "123",
-        message: "Login successful",
-      }
+      const data = await response.json()
+      // const data = {
+      //   user: {
+      //     id: "123",
+      //     email: "test@test.com",
+      //     username: "test",
+      //   },
+      //   token: "123",
+      //   message: "Login successful",
+      // }
+      await new Promise(resolve => setTimeout(resolve, 600000))
 
 
       if (response.ok) {
