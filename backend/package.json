@@ -24,9 +24,9 @@
     "cors": "^2.8.5",
     "cron": "^3.1.6",
     "dotenv": "^17.2.1",
-<<<<<<< HEAD
+
     "express": "^5.1.0",
-=======
+
     "express": "^4.18.2",
     "mongoose": "^8.16.5",
     "nodemon": "^3.1.10",
@@ -40,7 +40,7 @@
     "nodemailer": "^6.9.7",
     "cron": "^3.1.6",
     "helmet": "^7.1.0",
->>>>>>> 2ca2f9ffa73c76ccce20955bddfd34109a18d5a1
+ 2ca2f9ffa73c76ccce20955bddfd34109a18d5a1
     "express-rate-limit": "^7.1.5",
     "express-validator": "^7.0.1",
     "helmet": "^7.1.0",
