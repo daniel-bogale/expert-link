@@ -71,8 +71,16 @@ export default function Login() {
               <span className="text-xl font-bold">ExpertConnect</span>
             </Link>
             <nav className="flex items-center space-x-4">
-              <Link href="/register" className="text-gray-600 hover:text-gray-900">
-                Don't have an account?
+              <Link href="/category" className="text-gray-600 hover:text-gray-900 font-medium">
+                Category
+              </Link>
+              <Link href="/staff" className="text-gray-600 hover:text-gray-900 font-medium">
+                Staff
+              </Link>
+              <Link href="/register">
+                <Button className="ml-4 bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200">
+                  Sign Up
+                </Button>
               </Link>
             </nav>
           </div>
