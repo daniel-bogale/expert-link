@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
-import { Plus_Jakarta_Sans } from "next/font/google"
-import { NuqsAdapter } from "nuqs/adapters/next/app";
-
+import { Plus_Jakarta_Sans } from "next/font/google";
+import Providers from "@/components/Providers";
 
 const plus_jakarta_sans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -29,7 +27,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-
       <head>
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -41,10 +38,9 @@ export default function RootLayout({
       <body
         className={`${plus_jakarta_sans.variable} ${geistMono.variable} antialiased`}
       >
-        <NuqsAdapter>
-          <Toaster />
+        <Providers>
           {children}
-        </NuqsAdapter>
+        </Providers>
       </body>
     </html>
   );

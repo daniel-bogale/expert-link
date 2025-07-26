@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -11,10 +13,22 @@ import {
   Search,
   Calendar,
   MessageCircle,
+  User,
+  LogOut,
 } from "lucide-react"
 import Link from "next/link"
+import { useAuth } from "./auth_wrapper"
+import { useRouter } from "next/navigation"
 
 export default function HomePage() {
+  const { user, logout } = useAuth()
+  const router = useRouter()
+
+  const handleLogout = () => {
+    logout()
+    router.push("/")
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -35,14 +49,36 @@ export default function HomePage() {
                 Pricing
               </a>
 
-              <Button variant="default" className="bg-teal-600 hover:bg-teal-700" asChild>
-                <Link href="/register">
-                  Find an Expert
-                </Link>
-              </Button>
-              <a href="/login" className="text-gray-600 hover:text-gray-900">
-                Log In
-              </a>
+              {user ? (
+                <>
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-2 text-gray-600">
+                      <User className="w-4 h-4" />
+                      <span>{user?.email}</span>
+                    </div>
+                    <Button
+                      onClick={handleLogout}
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center space-x-2"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Logout</span>
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Button variant="default" className="bg-teal-600 hover:bg-teal-700" asChild>
+                    <Link href="/register">
+                      Find an Expert
+                    </Link>
+                  </Button>
+                  <a href="/login" className="text-gray-600 hover:text-gray-900">
+                    Log In
+                  </a>
+                </>
+              )}
             </nav>
           </div>
         </div>

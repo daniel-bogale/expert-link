@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Eye, EyeOff, User } from "lucide-react"
 import { buildApiUrl } from "@/config/env"
+import { useAuth } from "../auth_wrapper"
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ export default function Login() {
   const [error, setError] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
+  const { login } = useAuth()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -41,15 +43,29 @@ export default function Login() {
         body: JSON.stringify(formData),
       })
 
-      const data = await response.json()
+      console.log("**response", response)
+      // const data = await response.json()
+      const data = {
+        user: {
+          id: "123",
+          email: "test@test.com",
+          username: "test",
+        },
+        token: "123",
+        message: "Login successful",
+      }
+
 
       if (response.ok) {
-        router.push("/")
+        // Use the new auth context to login
+        login(data.user, data.token)
+        router.push("/dashboard")
       } else {
         setError(data.message || "Login failed")
       }
     } catch (err) {
       setError("Network error. Please try again.")
+      console.log("**err", err)
     } finally {
       setLoading(false)
     }
