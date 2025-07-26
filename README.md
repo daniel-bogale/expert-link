@@ -49,7 +49,7 @@ Create a `.env.local` file in the `frontend/` directory with the following varia
 
 # API Configuration
 NEXT_PUBLIC_API_URL=http://localhost:5000
-NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api
+NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
 
 # App Configuration
 NEXT_PUBLIC_APP_NAME=Hackaton App
@@ -146,7 +146,7 @@ The frontend uses a centralized configuration file at `frontend/src/config/env.t
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `NEXT_PUBLIC_API_URL` | Backend API URL | `http://localhost:5000` |
-| `NEXT_PUBLIC_API_BASE_URL` | Backend API base URL with prefix | `http://localhost:5000/api` |
+| `NEXT_PUBLIC_API_BASE_URL` | Backend API base URL with prefix | `http://localhost:5000` |
 | `NEXT_PUBLIC_APP_NAME` | Application name | `Hackaton App` |
 | `NEXT_PUBLIC_APP_VERSION` | Application version | `1.0.0` |
 | `NODE_ENV` | Environment mode | `development` |
