@@ -35,38 +35,39 @@ export default function HomePage() {
       <header className="border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+            <div className="flex items-center space-x-2">
+              <Image src="/globe.svg" alt="Logo" width={40} height={40} />
               <span className="text-xl font-bold text-gray-900">ExpertConnect</span>
             </div>
-            <nav className="hidden md:flex space-x-8 text-base font-semibold">
-              <a href="#" className="text-gray-600 hover:text-gray-900">
-                Categories
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+            <nav className="flex items-center space-x-6 text-base font-semibold">
+              <Link href="/category" className="text-gray-600 hover:text-gray-900">
+                Category
+              </Link>
+              <Link href="/staff" className="text-gray-600 hover:text-gray-900">
+                Staff
+              </Link>
+              <Link href="#" className="text-gray-600 hover:text-gray-900">
                 How it works
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              </Link>
+              <Link href="#" className="text-gray-600 hover:text-gray-900">
                 Pricing
-              </a>
-
+              </Link>
               {user ? (
-                <>
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-2 text-gray-600">
-                      <User className="w-4 h-4" />
-                      <span>{user?.email}</span>
-                    </div>
-                    <Button
-                      onClick={handleLogout}
-                      variant="outline"
-                      size="sm"
-                      className="flex items-center space-x-2"
-                    >
-                      <LogOut className="w-4 h-4" />
-                      <span>Logout</span>
-                    </Button>
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-2 text-gray-600">
+                    <User className="w-4 h-4" />
+                    <span>{user?.email}</span>
                   </div>
-                </>
+                  <Button
+                    onClick={handleLogout}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center space-x-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Logout</span>
+                  </Button>
+                </div>
               ) : (
                 <>
                   <Button variant="default" className="bg-teal-600 hover:bg-teal-700" asChild>
@@ -74,9 +75,9 @@ export default function HomePage() {
                       Find an Expert
                     </Link>
                   </Button>
-                  <a href="/login" className="text-gray-600 hover:text-gray-900">
+                  <Link href="/login" className="text-gray-600 hover:text-gray-900">
                     Log In
-                  </a>
+                  </Link>
                 </>
               )}
             </nav>
@@ -100,7 +101,7 @@ export default function HomePage() {
             </div>
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=400&width=500"
+                src="/globe.svg"
                 alt="Expert consultation illustration"
                 width={500}
                 height={400}
@@ -206,7 +207,7 @@ export default function HomePage() {
             <Card>
               <CardContent className="p-6 text-center">
                 <Image
-                  src="/placeholder.svg?height=80&width=80"
+                  src="/file.svg"
                   alt="Sarah's profile"
                   width={80}
                   height={80}
@@ -224,7 +225,7 @@ export default function HomePage() {
             <Card>
               <CardContent className="p-6 text-center">
                 <Image
-                  src="/placeholder.svg?height=80&width=80"
+                  src="/window.svg"
                   alt="Mark's profile"
                   width={80}
                   height={80}
@@ -242,7 +243,7 @@ export default function HomePage() {
             <Card>
               <CardContent className="p-6 text-center">
                 <Image
-                  src="/placeholder.svg?height=80&width=80"
+                  src="/globe.svg"
                   alt="Emily's profile"
                   width={80}
                   height={80}
