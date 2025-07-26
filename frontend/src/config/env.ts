@@ -2,7 +2,7 @@
 export const config = {
   // API Configuration
   apiUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000',
-  apiBaseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000/api',
+  apiBaseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000',
   
   // App Configuration
   appName: process.env.NEXT_PUBLIC_APP_NAME || 'Hackaton App',

@@ -43,26 +43,14 @@ export default function Login() {
         body: JSON.stringify(formData),
       })
 
-      console.log("**response", response)
       const data = await response.json()
-      // const data = {
-      //   user: {
-      //     id: "123",
-      //     email: "test@test.com",
-      //     username: "test",
-      //   },
-      //   token: "123",
-      //   message: "Login successful",
-      // }
-      await new Promise(resolve => setTimeout(resolve, 600000))
-
 
       if (response.ok) {
         // Use the new auth context to login
-        login(data.user, data.token)
+        login(data.data.user, data.data.token)
         router.push("/dashboard")
       } else {
-        setError(data.message || "Login failed")
+        setError(data.error || data.details || data.message || "Login failed")
       }
     } catch (err) {
       setError("Network error. Please try again.")

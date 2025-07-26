@@ -7,7 +7,7 @@ The Consultly API is a RESTful service that powers the expert consultation platf
 ## Quick Start
 
 ### Base URL
-- **Development**: `http://localhost:5000/api`
+- **Development**: `http://localhost:5000`
 - **Production**: `https://api.consultly.com/api`
 
 ### Authentication

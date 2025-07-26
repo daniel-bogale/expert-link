@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Eye, EyeOff, UserPlus } from "lucide-react"
 import { buildApiUrl } from "@/config/env"
+import { useAuth } from "../auth_wrapper"
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -16,12 +17,15 @@ export default function Register() {
     email: "",
     password: "",
     confirmPassword: "",
+    firstName: "",
+    lastName: "",
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const router = useRouter()
+  const { login } = useAuth()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -51,15 +55,19 @@ export default function Register() {
           username: formData.username,
           email: formData.email,
           password: formData.password,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
         }),
       })
 
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/login")
+        // Log the user in and redirect to dashboard
+        login(data.data.user, data.data.token)
+        router.push("/dashboard")
       } else {
-        setError(data.message || "Registration failed")
+        setError(data.error || data.details || data.message || "Registration failed")
       }
     } catch (err) {
       setError("Network error. Please try again.")
@@ -137,6 +145,38 @@ export default function Register() {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
                     placeholder="Enter your email"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
+                    placeholder="Enter your first name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
+                    placeholder="Enter your last name"
                   />
                 </div>
 
